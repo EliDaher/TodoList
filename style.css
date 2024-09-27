@@ -1,0 +1,510 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Kanit", sans-serif;
+}
+:root{
+    --lightColor: #F7F7F7;
+    --darkColor: #252525;
+    --primary: #6C63FF;
+
+    --background: var(--lightColor);
+    --foreColor: var(--darkColor);
+    --borderColor : var(--primary)
+    
+}
+/* dark and light mode */
+.darkmode{
+    
+    --lightColor: #F7F7F7;
+    --darkColor: #252525;
+
+    --background: var(--darkColor);
+    --foreColor: var(--lightColor);
+    --borderColor : var(--lightColor)
+
+}
+.darkmode .lightImg{
+    display: block;
+    margin: auto;
+
+}
+.darkmode .darkImg{
+    display: none;
+
+}
+.lightImg{
+    display: none;
+
+}
+body{
+    background-color: var(--background);
+    color: var(--foreColor);
+    transition: 0.3s ease-in-out;
+}
+
+/* header section */
+
+header{
+    display: flex;
+    width: 100vw;
+    height: 40px;
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+    align-items: center;
+}
+.darkModeToggle{
+    text-align: center;
+    width: 40px;
+    height: 34px;
+    margin: 0px 20px 0px auto;
+    border-radius: 7px;
+    background-color: transparent;
+    border: none;
+    box-shadow: -3px 3px 1px var(--foreColor);
+    
+    
+}
+.pageTitle{
+    margin: 0px 0px 0px auto;
+    font-size: 26px;
+    cursor: default;
+    user-select: none;
+}
+
+/*search bar section*/
+
+.searchBar{
+    width: 100vw;
+    height: 30px;
+    text-align: center;
+}
+
+.searchBox{
+    height: 30px;
+    width: clamp(150px, 40vw, 450px);
+    margin: 0px 10px 0px 20px;
+    border-radius: 5px;
+    border: 1px solid var(--borderColor);
+    background-color: transparent;
+    color: var(--foreColor);
+    display: inline-block;
+    vertical-align: middle;
+    
+}
+.searchText{
+    outline: none;
+    background-color: transparent;
+    border: 0;
+    height: 100%;
+    width: 80%;
+    color: var(--primary);
+}
+.searchIcon{
+    position: relative;
+    top: 4px;
+    width: 20px;
+    background-color: transparent;
+    border: 0;
+}
+.searchBox:focus-within{
+    transition: 0.5s;
+    box-shadow: 0px 0px 3px var(--primary);
+}
+
+
+
+/*dropdown list*/
+
+.stateFiltter{
+    outline: none;
+    height: 30px;
+    border: 0;
+    border-radius: 5px;
+    background-color: var(--primary);
+    color: var(--lightColor);
+    width: 100px;
+    user-select: none;
+}
+
+.dropdown{
+    display: none;
+}
+.stateFiltter:hover{
+    transition: 0.5s;
+    background: linear-gradient(#00000020,#00000020)
+    var(--primary);
+}
+.stateFiltter:focus .dropdown{
+    display: block;
+    position: absolute;
+    background-color: transparent;
+    width: 100px;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    margin-top: 6px;
+    border-radius: 5px;
+    z-index: 8;
+    background-color: var(--background);
+
+}
+.option:hover{
+    transition: 0.3s;
+    background-color: var(--primary);
+    color: var(--lightColor);
+
+}
+
+
+/*task container*/
+
+.tasksCountainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 30px 50px;
+    
+}
+.task{
+    width: 100%;
+    padding: 5px 20px;
+    
+}
+.task::after{
+    content: '';
+    background: var(--primary);
+    height: 1px;
+    width: 100%;
+    display: block;
+    margin: 5px auto;
+    
+}
+
+.taskTitle{
+    vertical-align: middle;
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    
+}
+
+.taskDesc{
+    vertical-align: bottom;
+    font-size: 14px;
+    font-weight: 300;
+    padding-left: 10px;
+}
+
+.taskCheckBox{
+    appearance: none;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: solid 1px var(--primary);
+    border-radius: 3px;
+    
+}
+
+.taskCheckBox:checked{
+    background: var(--primary);
+    background-image: url('./appImages/Rectangle\ 18.svg');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: 2px, 1px;
+}
+
+.taskCheckBox:checked + .taskTitle, .taskCheckBox:checked + * + .taskDesc{
+    text-decoration: line-through;
+    
+}
+
+.editBtn,
+.deleteBtn{
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: 0;
+    position: absolute;
+    right: 75px;
+
+}
+.editBtn{
+    right: 102px;
+}
+.editBtn:hover path{
+    transition: 0.5s;
+    stroke: #6C63FF;
+}
+.deleteBtn:hover path{
+    transition: 0.5s;
+    stroke: #E50000;
+    
+}
+
+
+/*add button section*/
+
+.addTask{
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 50%;
+    border: 0;
+    background-color: var(--primary);
+    box-shadow: 1px 3px 10px 2px var(--darkColor);
+    font-size: 40px;
+    z-index: 11;
+}
+
+.addTask:hover{
+    background: linear-gradient(#00000020, #00000020) 
+    var(--primary);
+    transform: scale(1.1);
+    transition: .5s;
+}
+
+
+/*add new task form*/
+
+.addContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100vh;
+    width: 100vw;
+    background-color: #00000030;
+    backdrop-filter: blur(3px);
+    display: none;
+    user-select: none;
+}
+
+.addForm{
+    position: relative;
+    height: 300px;
+    background-color: var(--background);
+    width: clamp(250px, 60vw, 450px);
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--borderColor);
+}
+
+.show{
+    display: block !important;
+}
+
+.hide{
+    display: none !important;
+}
+
+.formHeader{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.addTaskDesc, 
+.addTaskTitle{
+    font-size: 14px;
+    height: 30px;
+    width: 80%;
+    margin: 5px 0px;
+    position: relative;
+    padding-left: 10px;
+    background-color: var(--background);
+    color: var(--primary);
+    border: 1px solid var(--borderColor);
+    border-radius: 5px;
+    outline: none;
+    
+}
+.addTaskDesc{
+    height: 120px;
+    resize: none;
+    padding: 5px;
+}
+
+.actionBtn{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    position: relative;
+    top: 20px;
+}
+
+.cancelBtn{
+    width: 60px;
+    height: 30px;
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    border-radius: 5px;
+    color: var(--primary);
+    
+}
+.cancelBtn:hover{
+    animation: cancelHover .5s ease-out forwards;
+}
+
+@keyframes cancelHover {
+
+    0%{
+        background: linear-gradient(90deg, var(--primary)20%, var(--background)0%);
+        background-position: 0px;
+    }
+
+    75%{
+        background: linear-gradient(90deg, var(--primary)20%, var(--background)0%);
+        background-position: 25px;
+        background-size: 45px;
+        
+    }
+
+    100%{
+        background: linear-gradient(90deg, var(--primary)20%, var(--background)0%);
+        background-position: 0px;
+        background-size: 300px;
+        color: var(--background);
+        transform: scale(1.1);
+        
+    }
+
+}
+
+.applyBtn{
+    width: 60px;
+    height: 30px;
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 5px;
+    color: var(--lightColor);
+
+}
+
+.applyBtn:hover{
+    animation: applyHover .5s ease-out forwards;
+
+}
+
+@keyframes applyHover {
+    0%{
+        background: linear-gradient(90deg, var(--background)20%, var(--primary)0%);
+        background-position: 0px;
+    }
+
+    75%{
+        background: linear-gradient(90deg, var(--background)20%, var(--primary)0%);
+        background-position: 25px;
+        background-size: 45px;
+        
+    }
+
+    100%{
+        background: linear-gradient(90deg, var(--background)20%, var(--primary)0%);
+        background-position: 0px;
+        background-size: 300px;
+        color: var(--primary);
+        transform: scale(1.1);
+        
+    }
+}
+
+.updateBtn{
+    display: none;
+    width: 60px;
+    height: 30px;
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 5px;
+    color: var(--lightColor);
+
+}
+
+.updateBtn:hover{
+    animation: applyHover .5s ease-out forwards;
+
+}
+
+
+/*Empty image section*/
+
+.imgContainer{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    user-select: none;
+}
+
+.tasksCountainer:has(.task) + .imgContainer{
+    display: none;
+} 
+
+
+/*wrong input effect*/
+
+.wrongInput:empty{  
+    animation: wronginput .5s;
+    border: 1px solid #E50000;
+
+}
+
+
+
+@keyframes wronginput {
+    0%{
+        transform: rotate(1deg);
+    }
+    25%{
+        transform: rotate(-1deg);
+    }
+    50%{
+        transform: rotate(1deg);
+    }
+    75%{
+        transform: rotate(-1deg);
+    }  
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+/*counters section*/
+.counters{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--foreColor);
+
+}
+
+.totalCount{
+    background-color: var(--primary);
+    padding: 0px 6px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.completeCount{
+    background-color: #00E500;
+    padding: 0px 6px;
+    border-radius: 10px;
+    font-size: 12px;
+    
+}
