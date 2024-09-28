@@ -258,5 +258,5 @@ const calcTotalTask = () => {
 
 button.forEach(element => {
     element.addEventListener("click", (event) => event.preventDefault())
-    element.addEventListener("touchstart", (event) => event.preventDefault())
+
 })
