@@ -13,12 +13,13 @@ var updateFormHeader = document.querySelector(".formHeader")
 var applyBtn = document.querySelector(".applyBtn")
 var completeCount = document.querySelector(".completeCount")
 var totalCount = document.querySelector(".totalCount")
-
+var button = document.querySelectorAll("button")
 
 
 //create the app variable
 var darkMode = false;
 var data = JSON.parse(localStorage.getItem("myTasks"))
+data = (data) ? data : []
 var updateItemID = ""
 
 
@@ -103,12 +104,14 @@ const createTaskElement = (taskid ,taskName, taskDesc, taskState) =>{
 
 //show tasks
 const showItem = () => {
-    tasksCountainer.innerHTML = ""
-    JSON.parse(localStorage.getItem("myTasks"))
-    data.map((task) =>{
-        tasksCountainer.innerHTML += createTaskElement(task.id ,task.title, task.desc, task.state)
-
-    })
+    if(data != null){
+        tasksCountainer.innerHTML = ""
+        JSON.parse(localStorage.getItem("myTasks"))
+        data.map((task) =>{
+            tasksCountainer.innerHTML += createTaskElement(task.id ,task.title, task.desc, task.state)
+            
+        })
+    }
 }
 
 
@@ -136,7 +139,7 @@ const addTask = (e) => {
     }
 
     calcTotalTask()
-    e.preventDefault()
+   // e.preventDefault()
 }
 
 
@@ -234,10 +237,26 @@ const updateTaskState = (taskId) => {
 // update check task count
 
 const calcCheckTask = () => {
-    var completeData = data.filter(item => item.state != "")
-    completeCount.innerHTML = completeData.length
+    if(data == null){
+        completeCount.innerHTML = "0"
+    }else{
+        var completeData = data.filter(item => item.state != "")
+        completeCount.innerHTML = completeData.length
+    }
 }
 
 const calcTotalTask = () => {
-    totalCount.innerHTML = data.length
+    if(data == null){
+        totalCount.innerHTML = "0"
+    }else{
+        totalCount.innerHTML = data.length
+    }
 }
+
+
+//prevent default on every botton click or touch
+
+button.forEach(element => {
+    element.addEventListener("click", (event) => event.preventDefault())
+    element.addEventListener("touchstart", (event) => event.preventDefault())
+})
