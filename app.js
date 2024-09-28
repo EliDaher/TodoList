@@ -122,7 +122,7 @@ const addTask = (e) => {
         newTaskTitle.focus()
     }else{
         newTaskTitle.classList.remove("wrongInput")
-        var newId = (data) ? data.slice(data.length - 1)[0].id + 1 : 0
+        var newId = (data.length != 0) ? data.slice(data.length - 1)[0].id + 1 : 0
         newTask = {
             "id": newId,
             "title": newTaskTitle.value,
